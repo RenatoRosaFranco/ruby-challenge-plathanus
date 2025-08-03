@@ -8,15 +8,15 @@ Projeto orientado a objetos, com **validação, errors específicos e testes RSp
 
 
 ## Sumario
- - Requisitos
- - Instalação
- - Estrutura do Projeto
- - Uso Rápido
- - Erros
- - Testes
- - Qualidade e estilo
- - Commits semânticos
- - Notas de design
+ - [Requisitos](#requisitos)
+ - [Instalação](#instalação)
+ - [Estrutura do Projeto](#estrutura-do-projeto)
+ - [Uso Rápido](#uso-rápido)
+ - [Erros](#erros)
+ - [Testes](#testes)
+ - [Qualidade e estilo](#qualidade-e-estilo)
+ - [Commits semânticos](#commits-semânticos)
+ - [Notas de design](#notas-de-design)
 
 ## Requisitos
   - Ruby 3.x (recomendado)
@@ -31,7 +31,7 @@ Projeto orientado a objetos, com **validação, errors específicos e testes RSp
 
 ### Estrutura do projeto
 
-```
+```bash
 lib/
   roman_numeral_converter.rb
   utils/
@@ -43,7 +43,7 @@ README.md
 
 ## Uso rápido
 
-```
+```ruby
 require_relative "lib/roman_numeral_converter"
 
 RomanNumeralConverter.new(1994).to_roman
