@@ -19,10 +19,5 @@ module RomanDictionary
 
   MIN = 1
   MAX = 3999
-
-  def in_roman_range?(number)
-    (MIN..MAX).cover?(number)
-  end
-
-  module_function :in_roman_range?
 end
+

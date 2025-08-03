@@ -9,10 +9,10 @@ class RomanNumeralConverter
   class NonIntegerError < Error; end
   class OutOfRangeError < Error; end
 
-  attr_reader :number
+  attr_reader :number, :min, :max
 
-  def initialize(number)
-    @number = number
+  def initialize(number, min: RomanDictionary::MIN, max: RomanDictionary::MAX)
+    @number, @min, @max = number, min, max
     validate!
   end
 
@@ -32,7 +32,7 @@ class RomanNumeralConverter
   private
 
   def validate!
-    raise NonIntegerError, "number must be an Integer" unless number.is_a?(Integer)
-    raise OutOfRangeError,  "number must be between #{MIN} and #{MAX}" unless in_roman_range?(number)
+    raise NonIntegerError, "expected Integer, got #{number.class}" unless number.is_a?(Integer)
+    raise OutOfRangeError, "expected #{min}..#{max} got #{number}" unless (min..max).cover?(number)
   end
 end
