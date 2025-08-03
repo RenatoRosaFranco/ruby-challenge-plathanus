@@ -1,11 +1,19 @@
-## Roman Numerals Converter (Ruby)
+<div align="center">
+ 
+  ## Roman Numerals Converter (Ruby)
+
+  <br/>
+  
+  ![Ruby](https://img.shields.io/badge/Ruby-3.2+-red)
+  ![RSpec](https://img.shields.io/badge/tests-RSpec-green)
+  ![License](https://img.shields.io/badge/license-MIT-blue)
+ </div>
 
 Converte um **numero natural** (inteiro positivo) para seu equivalente em
-**algarismos romanos**, seguindo as regras clássicas (inclui notação subtrativa):
+**algarismos romanos**, <br>seguindo as regras clássicas (inclui notação subtrativa):
 IV, IX, XL, XC, CD, CM).
 
 Projeto orientado a objetos, com **validação, errors específicos e testes RSpec.**
-
 
 ## Sumario
  - [Requisitos](#requisitos)
@@ -19,9 +27,9 @@ Projeto orientado a objetos, com **validação, errors específicos e testes RSp
  - [Notas de design](#notas-de-design)
 
 ## Requisitos
-  - Ruby 3.x (recomendado)
+  - Ruby 3.x **(recomendado)**
   - Bundler
-  - RSpec (adicionado via bundle add rspec)
+  - RSpec **(adicionado via bundle add rspec)**
 
 ## Instalação
 
@@ -56,8 +64,8 @@ RomanNumeralConverter.new(2024).to_roman
 ## Erros
 
 A classe expõe errors especifícos (subclasse de StandardError):
-  - RomanNumeralConverter::NonIntegerError - quando number **não é integer**
-  - RomanNumeralConverter::OutOfRangeError - quando number **está fora de** min..max
+- `RomanNumeralConverter::NonIntegerError` — quando `number` **não é** `Integer`.
+- `RomanNumeralConverter::OutOfRangeError` — quando `number` **está fora de** `min..max`.
 
 exemplo
 
@@ -95,10 +103,10 @@ A suite cobre:
 ## Commits semânticos
 Use **Conventional Commits**
   
-  - feat: nova funcionalidade
-  - fix: correção de bug
-  - test: alterações nos testes
-  - refactor: refatoração sem mudança de comportamento
+  - **feat:** nova funcionalidade
+  - **fix:** correção de bug
+  - **test:** alterações nos testes
+  - **refactor:** refatoração sem mudança de comportamento
 
 ## Notas de design
   - Intervalo configurável (min, max) para usos menos restritos.
