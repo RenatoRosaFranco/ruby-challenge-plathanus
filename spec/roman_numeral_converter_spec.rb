@@ -5,11 +5,11 @@ require_relative '../lib/roman_numeral_converter'
 
 RSpec.describe RomanNumeralConverter, type: :class do
   describe 'validation' do
-    context 'when number ist not an Integer'do
+    context 'when number is not an Integer'do
       let(:error) { described_class::NonIntegerError }
 
       [3.14, "10", nil, true].each do |value|
-        it "raises NotIntegerError for #{value.inspect}" do
+        it "raises NonIntegerError for #{value.inspect}" do
           expect { described_class.new(value) }.to raise_error(error)
         end
       end
@@ -20,7 +20,7 @@ RSpec.describe RomanNumeralConverter, type: :class do
 
       [0, -1, 4000].each do |value|
         it "raises OutOfRange for #{value}" do
-          expect { described_class.new(value).to raise_error(error) }
+          expect { described_class.new(value) }.to raise_error(error)
         end
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe RomanNumeralConverter, type: :class do
       end
     end
 
-    context 'with representative case' do
+    context 'with representative cases' do
       dictionary = {
         2 => "II", 3 => "III", 8 => "VIII", 14 => "XIV", 19 => "XIX", 29 => "XXIX",
         44=>"XLIV", 49=>"XLIX", 58=>"LVIII", 93=>"XCIII", 141=>"CXLI",
@@ -74,7 +74,7 @@ RSpec.describe RomanNumeralConverter, type: :class do
       end
     end
 
-    context 'shape contraints' do
+    context 'shape constraints' do
       let(:valid_chars) { /\A[IVXLCDM]+\z/ }
       let(:invalid_subtractive) { /(IL|IC|ID|IM|XD|XM|VC|VL|VX|LC|LD|LM|DM)/i }
       
@@ -85,7 +85,7 @@ RSpec.describe RomanNumeralConverter, type: :class do
         ]
       end
 
-      it 'products only valid characters' do
+      it 'produces only valid characters' do
         samples.each do |number|
           expect(described_class.new(number).to_roman).to match(valid_chars)
         end
@@ -99,7 +99,7 @@ RSpec.describe RomanNumeralConverter, type: :class do
         end
       end
 
-      it 'uses only valid subtrative pairs' do
+      it 'uses only valid subtractive pairs' do
         samples.each do |number|
           expect(described_class.new(number).to_roman).not_to match(invalid_subtractive)
         end
@@ -120,13 +120,12 @@ RSpec.describe RomanNumeralConverter, type: :class do
 
         it { is_expected.to eq(result) }
       end
+    end
 
-      context 'immutability' do
-        let(:converter) { described_class.new(944) }
-      
-        it 'does not mutate the stored number' do
-          expect { converter.to_roman }.not_to change { converter.number }
-        end
+    context 'immutability' do
+      it 'does not mutate the stored number' do
+        converter =  described_class.new(944)
+        expect { converter.to_roman }.not_to change { converter.number }
       end
     end
   end
